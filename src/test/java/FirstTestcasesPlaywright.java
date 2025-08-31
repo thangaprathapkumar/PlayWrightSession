@@ -4,6 +4,10 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import org.testng.annotations.Test;
 
+import java.util.regex.Pattern;
+
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 public class FirstTestcasesPlaywright
 {
 
@@ -17,6 +21,7 @@ public class FirstTestcasesPlaywright
       page.navigate("https://freelance-learn-automation.vercel.app/");
       String title = page.title();
       System.out.println("Playwright Session : "+title);
+      assertThat(page).hasTitle(Pattern.compile("Learn Automation Courses")); // playwright assertion
       browser.close();
       pw.close();
     }

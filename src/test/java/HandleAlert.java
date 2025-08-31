@@ -12,7 +12,7 @@ public class HandleAlert
     @Test
     public static void alertHandle() {
 
-        Browser browser = Playwright.create().chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(2000));
+        Browser browser = Playwright.create().chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(3000));
         Page page = browser.newPage();
         page.navigate("https://the-internet.herokuapp.com/javascript_alerts");
 
@@ -21,11 +21,10 @@ public class HandleAlert
             System.out.println("The alert Message is :"+mesg);
             Assert.assertTrue(mesg.contains("I am a JS Alert"));
             dialog.accept();
+
         });
 
         page.locator("//button[text()='Click for JS Alert']").click();
-
-
 
 
     }
